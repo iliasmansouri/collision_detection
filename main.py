@@ -60,3 +60,4 @@ if __name__ == "__main__":
         collision = collision_detector.check_for_collisions(datapoints.tracks)
         if collision:
             visualize(batch, datapoints)
+        batch.clear_images()
