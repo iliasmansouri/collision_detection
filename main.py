@@ -3,6 +3,7 @@ from player_detection import Model
 from player_tracking import Tracker
 from collision_detection import Detector
 import cv2
+import argparse
 
 
 def visualize(batch, datapoints):
@@ -35,8 +36,21 @@ def visualize(batch, datapoints):
 
 
 if __name__ == "__main__":
-    video_path = "video.mp4"
-    video_handler = VideoHandler(video_path, batch_size=16, n=5)
+    parser = argparse.ArgumentParser(description="Video processing script")
+
+    parser.add_argument(
+        "--video_path", type=str, default="video.mp4", help="Path to the video file"
+    )
+    parser.add_argument(
+        "--batch_size", type=int, default=16, help="Batch size for processing the video"
+    )
+    parser.add_argument(
+        "--n", type=int, default=5, help="Parameter 'n' for VideoHandler"
+    )
+
+    args = parser.parse_args()
+
+    video_handler = VideoHandler(args.video_path, batch_size=args.batch_size, n=args.n)
     detector = Model()
     tracker = Tracker()
     collision_detector = Detector()
