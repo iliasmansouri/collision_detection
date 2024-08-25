@@ -41,11 +41,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--video_path", type=str, default="video.mp4", help="Path to the video file"
     )
+    parser.add_argument("--batch_size", type=int, default=16, help="Frame Batch size")
     parser.add_argument(
-        "--batch_size", type=int, default=16, help="Batch size for processing the video"
-    )
-    parser.add_argument(
-        "--n", type=int, default=5, help="Parameter 'n' for VideoHandler"
+        "--n", type=int, default=5, help="Take every n-th frame for processing"
     )
 
     args = parser.parse_args()
